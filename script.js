@@ -44,18 +44,38 @@ const app = {
 
     /* 🔍 SEARCH PLANET */
     searchPlanet(e){
-        if(e.key !== 'Enter') return
+    if(e.key !== 'Enter') return
 
-        const planet = e.target.value.trim().toLowerCase()
-        if(!planet) return
+    let planet = e.target.value.trim().toLowerCase()
+    if(!planet) return
 
-        const map = document.getElementById('nasaMap')
+    // 🌍 تحويل عربي → إنجليزي
+    const planetsMap = {
+        "عطارد": "mercury",
+        "الزهرة": "venus",
+        "ارض": "earth",
+        "الأرض": "earth",
+        "المريخ": "mars",
+        "المشتري": "jupiter",
+        "زحل": "saturn",
+        "اورانوس": "uranus",
+        "أورانوس": "uranus",
+        "نبتون": "neptune",
+        "القمر": "moon",
+        "الشمس": "sun"
+    }
 
-        // Navigate inside NASA Eyes
-        map.src = `https://eyes.nasa.gov/apps/solar-system/#/${planet}`
+    // لو كتب عربي
+    if(planetsMap[planet]){
+        planet = planetsMap[planet]
+    }
 
-        e.target.value = ''
-    },
+    const map = document.getElementById('nasaMap')
+    map.src = `https://eyes.nasa.gov/apps/solar-system/#/${planet}`
+
+    e.target.value = ''
+}
+
 
     /* ⭐ STARS BACKGROUND */
     stars(){
