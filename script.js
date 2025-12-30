@@ -44,25 +44,25 @@ const app = {
 
     /* 🔍 SEARCH PLANET */
     searchPlanet(e){
-    if(e.key !== 'Enter') return
+        if(e.key !== 'Enter') return
 
-    let planet = e.target.value.trim().toLowerCase()
-    if(!planet) return
-
-    // 🌍 تحويل عربي → إنجليزي
-    const planetsMap = {
-        "عطارد": "mercury",
-        "الزهرة": "venus",
-        "ارض": "earth",
-        "الأرض": "earth",
-        "المريخ": "mars",
-        "المشتري": "jupiter",
-        "زحل": "saturn",
-        "اورانوس": "uranus",
-        "أورانوس": "uranus",
-        "نبتون": "neptune",
-        "القمر": "moon",
-        "الشمس": "sun"
+        let planet = e.target.value.trim().toLowerCase()
+        if(!planet) return
+    
+        // 🌍 تحويل عربي → إنجليزي
+        const planetsMap = {
+            "عطارد": "mercury",
+            "الزهرة": "venus",
+            "ارض": "earth",
+            "الأرض": "earth",
+            "المريخ": "mars",
+            "المشتري": "jupiter",
+            "زحل": "saturn",
+            "اورانوس": "uranus",
+            "أورانوس": "uranus",
+            "نبتون": "neptune",
+            "القمر": "moon",
+            "الشمس": "sun"
     }
 
     // لو كتب عربي
