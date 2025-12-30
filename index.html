@@ -15,16 +15,13 @@
 
 <body>
 
-<!-- Background Stars -->
 <canvas id="star-canvas"></canvas>
 
-<!-- System Loader -->
 <div id="loader">
     <div class="loader-ring"></div>
     <p>SYSTEM BOOTING</p>
 </div>
 
-<!-- NAVBAR -->
 <nav>
     <div class="nav-container">
         <div class="logo">
@@ -43,7 +40,6 @@
 
 <main>
 
-<!-- HOME -->
 <section id="home" class="section active">
     <div class="hero">
         <h1>ORBITAL<br><span>COMMAND</span></h1>
@@ -52,7 +48,6 @@
     </div>
 </section>
 
-<!-- SOLAR MAP -->
 <section id="solar" class="section map-mode">
 
     <div class="map-wrapper">
@@ -66,7 +61,17 @@
             <div id="mapClock"></div>
         </div>
 
-        <!-- Map Loader -->
+        <!-- 🔍 SEARCH BOX -->
+        <div class="map-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+                type="text"
+                id="planetSearch"
+                placeholder="SEARCH PLANET (e.g. Mars)"
+                onkeydown="app.searchPlanet(event)">
+        </div>
+
+        <!-- Loader -->
         <div id="mapLoader" class="map-loader">
             <div class="radar"></div>
             <p>SYNCING ORBITAL DATA</p>
@@ -79,10 +84,8 @@
             loading="lazy">
         </iframe>
 
-        <!-- Scanlines -->
         <div class="scanlines"></div>
 
-        <!-- Exit -->
         <button class="exit-map" onclick="app.navigate('home')">EXIT MAP</button>
 
     </div>
