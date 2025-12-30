@@ -9,10 +9,13 @@ const app = {
             document.getElementById('loader').style.display='none'
         },1000)
 
-        // Map loader
+        // Map loader (لو موجود)
         const iframe = document.getElementById('nasaMap')
-        iframe.onload = () => {
-            document.getElementById('mapLoader').style.display='none'
+        const mapLoader = document.getElementById('mapLoader')
+        if(iframe && mapLoader){
+            iframe.onload = () => {
+                mapLoader.style.display='none'
+            }
         }
 
         setInterval(()=>this.updateClock(),1000)
@@ -39,6 +42,22 @@ const app = {
         window.scrollTo(0,0)
     },
 
+    /* 🔍 SEARCH PLANET */
+    searchPlanet(e){
+        if(e.key !== 'Enter') return
+
+        const planet = e.target.value.trim().toLowerCase()
+        if(!planet) return
+
+        const map = document.getElementById('nasaMap')
+
+        // Navigate inside NASA Eyes
+        map.src = `https://eyes.nasa.gov/apps/solar-system/#/${planet}`
+
+        e.target.value = ''
+    },
+
+    /* ⭐ STARS BACKGROUND */
     stars(){
         const canvas = document.getElementById('star-canvas')
         const ctx = canvas.getContext('2d')
@@ -62,7 +81,10 @@ const app = {
             ctx.clearRect(0,0,w,h)
             stars.forEach(s=>{
                 s.y -= s.s
-                if(s.y < 0) s.y = h
+                if(s.y < 0){
+                    s.y = h
+                    s.x = Math.random()*w
+                }
                 ctx.fillStyle = 'rgba(0,240,255,.8)'
                 ctx.beginPath()
                 ctx.arc(s.x,s.y,s.r,0,Math.PI*2)
