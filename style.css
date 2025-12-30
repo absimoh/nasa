@@ -16,12 +16,14 @@ body{
     overflow-x:hidden;
 }
 
+/* BACKGROUND */
 #star-canvas{
     position:fixed;
     inset:0;
     z-index:-1;
 }
 
+/* LOADER */
 #loader{
     position:fixed;
     inset:0;
@@ -93,6 +95,7 @@ nav{
 }
 .section.active{display:block}
 
+/* HERO */
 .hero{
     height:100vh;
     display:flex;
@@ -127,7 +130,7 @@ nav{
     color:#000;
 }
 
-/* MAP MODE */
+/* MAP */
 .map-mode{padding:0}
 .map-wrapper{
     position:fixed;
@@ -146,7 +149,7 @@ nav{
     position:absolute;
     top:20px;
     left:20px;
-    z-index:20;
+    z-index:30;
     font-family:var(--fontD);
     color:var(--primary);
 }
@@ -156,23 +159,54 @@ nav{
     color:var(--dim);
 }
 
-/* MAP LOADER */
-.map-loader{
+/* 🔍 SEARCH (CENTER TOP) */
+.map-search{
     position:absolute;
-    inset:0;
-    background:#000;
-    z-index:15;
+    top:90px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:30;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
     align-items:center;
+    gap:10px;
+    padding:.7rem 1.4rem;
+    background:rgba(5,10,20,.75);
+    border:1px solid rgba(0,240,255,.35);
+    border-radius:30px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px rgba(0,240,255,.2);
 }
-.radar{
-    width:80px;
-    height:80px;
-    border:2px solid var(--primary);
-    border-radius:50%;
-    animation:spin 1.2s linear infinite;
+.map-search i{color:var(--primary)}
+.map-search input{
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-family:var(--fontD);
+    letter-spacing:.08em;
+    width:230px;
+}
+.map-search input::placeholder{
+    color:var(--dim);
+    font-size:.75rem;
+}
+
+/* EXIT */
+.exit-map{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    z-index:30;
+    background:none;
+    border:1px solid var(--primary);
+    color:var(--primary);
+    padding:.6rem 1.8rem;
+    cursor:pointer;
+    font-family:var(--fontD);
+}
+.exit-map:hover{
+    background:var(--primary);
+    color:#000;
 }
 
 /* SCANLINES */
@@ -189,20 +223,7 @@ nav{
     z-index:10;
 }
 
-/* EXIT BUTTON */
-.exit-map{
-    position:absolute;
-    bottom:20px;
-    right:20px;
-    z-index:20;
-    background:none;
-    border:1px solid var(--primary);
-    color:var(--primary);
-    padding:.6rem 1.5rem;
-    cursor:pointer;
-    font-family:var(--fontD);
-}
-
+/* ANIMATION */
 @keyframes spin{
     to{transform:rotate(360deg)}
 }
@@ -211,4 +232,7 @@ nav{
 @media(max-width:768px){
     .hero h1{font-size:2.5rem}
     .nav-links{display:none}
+    .map-search{
+        width:90%;
+    }
 }
